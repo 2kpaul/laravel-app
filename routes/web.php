@@ -21,14 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resources([
-    'pages' => PageController::class,
-    'articles' => ArticleController::class,
-    'categories' => CategoryController::class,
-    'tags' => TagController::class,
-]);
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('{page}', [PageController::class, 'show']);
